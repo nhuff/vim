@@ -1,6 +1,4 @@
 set nocompatible
-colorscheme twilight
-
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -11,15 +9,15 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
+Bundle 'CSApprox'
 "Bundle "myusuf3/numbers.vim"
 
 filetype plugin indent on
 
-set background=dark
 set ts=2
 set sw=2
 set expandtab
@@ -38,11 +36,20 @@ set backupdir=~/.vimbackup//,/tmp//
 set directory=~/.vimswaps//,/tmp//
 set backspace=2
 set laststatus=2
+set statusline=
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " filename
+set statusline+=%h%m%r%w                     " status flags
+set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type
+set statusline+=\ %{fugitive#statusline()}     " fugitive
+set statusline+=%=                           " right align remainder
+set statusline+=%-14(%l,%c%V%)               " line, character
+set statusline+=%<%P                         " file position
 
 let mapleader = ','
 let maplocalleader = ','
 
-let g:Powerline_stl_path_style = 'full'
+let g:Powerline_stl_path_style = 'filename'
 
 let g:tagbar_type_puppet = {
   \ 'ctagstype' : 'puppet',
@@ -67,12 +74,13 @@ map <leader>tm :tabmove
 map <leader>d  :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>t  :TagbarToggle<CR>
 
-if (&term == 'xterm')
-  set t_Co=256
-endif
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+endif
+
+if has("gui_running")
+  colorscheme twilight256
 endif
 
 if has("autocmd")
