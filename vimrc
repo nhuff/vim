@@ -14,6 +14,8 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'majutsushi/tagbar'
+"Bundle "myusuf3/numbers.vim"
 
 filetype plugin indent on
 
@@ -31,13 +33,39 @@ set ruler
 set showcmd
 set incsearch
 set encoding=utf-8
+set backup
+set backupdir=~/.vimbackup//,/tmp//
+set directory=~/.vimswaps//,/tmp//
+set backspace=2
+set laststatus=2
 
 let mapleader = ','
 let maplocalleader = ','
 
-set laststatus=2
-
 let g:Powerline_stl_path_style = 'full'
+
+let g:tagbar_type_puppet = {
+  \ 'ctagstype' : 'puppet',
+  \ 'kinds'     : [
+    \ 'c:class',
+    \ 's:site',
+    \ 'n:node',
+    \ 'd:define',
+    \ 'v:variable',
+  \ ]
+\}
+let g:tagbar_autofocus = 1
+
+map <right> :bn<cr>
+map <left>  :bp<cr>
+map <up>    :wincmd w<cr>
+map <down>  :wincmd W<cr>
+map <leader>tn :tabnew<cr>
+map <leader>te :tabedit
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
+map <leader>d  :execute 'NERDTreeToggle ' . getcwd()<CR>
+map <leader>t  :TagbarToggle<CR>
 
 if (&term == 'xterm')
   set t_Co=256
