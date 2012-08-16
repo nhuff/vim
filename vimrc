@@ -9,11 +9,9 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-ruby/vim-ruby'
-"Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
-"Bundle "myusuf3/numbers.vim"
 
 filetype plugin indent on
 
@@ -82,7 +80,11 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-colorscheme twilight256
+if has("gui_running")
+  colorscheme twilight
+else
+  colorscheme twilight256
+endif
 
 if has("autocmd")
   filetype plugin indent on
