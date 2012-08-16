@@ -13,7 +13,6 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
-Bundle 'CSApprox'
 "Bundle "myusuf3/numbers.vim"
 
 filetype plugin indent on
@@ -74,14 +73,16 @@ map <leader>tm :tabmove
 map <leader>d  :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>t  :TagbarToggle<CR>
 
+if (&term == 'xterm')
+    set t_Co=256
+endif
+
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
 
-if has("gui_running")
-  colorscheme twilight256
-endif
+colorscheme twilight256
 
 if has("autocmd")
   filetype plugin indent on
