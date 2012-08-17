@@ -81,6 +81,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 if has("gui_running")
+  set guifont=Anonymous\ Pro\ 14
   colorscheme twilight
 else
   colorscheme twilight256
