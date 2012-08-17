@@ -12,6 +12,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'majutsushi/tagbar'
+Bundle 'matchit.zip'
 
 filetype plugin indent on
 
