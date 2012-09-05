@@ -1,7 +1,13 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if has("win32")
+	set rtp+=~/vimfiles/bundle/vundle/
+  call vundle#rc("~/vimfiles/bundle")
+else
+	set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
+endif
+
 
 Bundle 'gmarik/vundle'
 Bundle 'rodjek/vim-puppet'
