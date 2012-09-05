@@ -97,8 +97,15 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-if has("gui_running")
+if has("gui_gtk2")
   set guifont=Anonymous\ Pro\ 14
+endif
+
+if has("gui_win32")
+    set guifont=Consolas:h14
+endif
+
+if has("gui_running")
   colorscheme twilight
 else
   colorscheme twilight256
