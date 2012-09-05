@@ -43,6 +43,15 @@ set statusline+=\ %{fugitive#statusline()}     " fugitive
 set statusline+=%=                           " right align remainder
 set statusline+=%-14(%l,%c%V%)               " line, character
 set statusline+=%<%P                         " file position
+set relativenumber
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
 
 let mapleader = ','
 let maplocalleader = ','
@@ -71,6 +80,7 @@ map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
 map <leader>d  :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>t  :TagbarToggle<CR>
+map <leader>r  :call NumberToggle()<cr>
 
 if (&term == 'xterm')
     set t_Co=256
